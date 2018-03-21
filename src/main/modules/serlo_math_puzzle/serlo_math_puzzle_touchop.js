@@ -38,6 +38,10 @@ function setupCanvas (svgElement) {
     .on('mousedown', grabElement)
     .on('touchstart', grabElement)
   deepLayout(svgElement, true)
+  var palette= d3.select('.palette');
+  var scale= 600/palette.node().getBBox().width;
+  palette.attr('transform','translate(0,'+(400-70*scale)+') scale('+scale+')');
+  palette.select('rect').attr('width',600/scale);
   algebra.verify(svgElement)
 
   // setup event listeners for an element. This function is called
